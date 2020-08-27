@@ -1,0 +1,51 @@
+-------------------- Auto-Git Log --------------------
+		Thu Aug 27 2020 19:18:21 GMT-0400 (Eastern Daylight Time)
+------------------------------------------------------
+
+Modified files:
+* package.json
+
+
+Created files:
+* .autogit/autogit.json
+* .gitignore
+* bot.js
+* commands/botstats.js
+* commands/stats.js
+* config.json
+* extra/statistics.js
+* index.js
+* node_modules/steamapi/.gitattributes
+* node_modules/steamapi/README.md
+* node_modules/steamapi/index.js
+* node_modules/steamapi/package.json
+* node_modules/steamapi/src/SteamAPI.js
+* node_modules/steamapi/src/structures/Achievement.js
+* node_modules/steamapi/src/structures/Badge.js
+* node_modules/steamapi/src/structures/Friend.js
+* node_modules/steamapi/src/structures/Game.js
+* node_modules/steamapi/src/structures/GameServer.js
+* node_modules/steamapi/src/structures/Player.js
+* node_modules/steamapi/src/structures/PlayerAchievements.js
+* node_modules/steamapi/src/structures/PlayerBadges.js
+* node_modules/steamapi/src/structures/PlayerBans.js
+* node_modules/steamapi/src/structures/PlayerServers.js
+* node_modules/steamapi/src/structures/PlayerStats.js
+* node_modules/steamapi/src/structures/PlayerSummary.js
+* node_modules/steamapi/src/structures/RecentGame.js
+* node_modules/steamapi/src/structures/Server.js
+* node_modules/steamapi/src/utils/fetch.js
+* node_modules/steamapi/src/utils/objectify.js
+* node_modules/xmlhttprequest/.jshintrc
+* node_modules/xmlhttprequest/.npmignore
+* node_modules/xmlhttprequest/LICENSE
+* node_modules/xmlhttprequest/README.md
+* node_modules/xmlhttprequest/lib/XMLHttpRequest.js
+* node_modules/xmlhttprequest/package.json
+* package-lock.json
+
+
+Deleted files:
+
+
+Renamed files:
