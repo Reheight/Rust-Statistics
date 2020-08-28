@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const { steamKey } = require('../config.json');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 module.exports = {
     "name": "help",
@@ -15,6 +14,7 @@ module.exports = {
                     \`rs!kd <Steam ID/Link>\` - View Rust KDR
                     \`rs!kills <Steam ID/Link>\` - View Kills
                     \`rs!deaths <Steam ID/Link>\` - View Deaths
+                    \`rs!profile <Steam ID/Link>\` - View Steam Profile
                     \`rs!botstats\` - View Bot Statistics`
                 )
                 .setTimestamp()
