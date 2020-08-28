@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Rust Statistics Bot",
   "main": "index.js",
-  "jslint.enable": false,
   "engines": {
     "node": "12.x",
     "npm": "*"
