@@ -62,7 +62,6 @@ for (const file of commandFiles) {
 //#region Message Event
 client.on('message', async (message) => {
     if (message.author.bot) return; // Ensure the message isn't from a bot
-	if (message.channel.type === 'dm') return; // Ensure the message isn't in a DM
 	
 	if (!message.content.startsWith(prefix)) return;
 

@@ -15,6 +15,7 @@ module.exports = {
                     \`rs!kills <Steam ID/Link>\` - View Kills
                     \`rs!deaths <Steam ID/Link>\` - View Deaths
                     \`rs!profile <Steam ID/Link>\` - View Steam Profile
+                    \`rs!suggestion <Message>\` - Suggest Something to the Developers
                     \`rs!botstats\` - View Bot Statistics`
                 )
                 .setTimestamp()
