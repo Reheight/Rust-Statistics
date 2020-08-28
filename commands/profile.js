@@ -36,7 +36,7 @@ module.exports = {
         steam.resolve(args[0]).then(id => {
             steam.getUserSummary(id).then(summary => {
                 console.log(summary);
-                steam.getUserBans(id).then(bans => {
+                steam.getUserBans(id).then(async bans => {
                     const embed = new Discord.MessageEmbed()
                     .setTitle("<:steam:744961989817925767> __**Steam Profile**__ <:steam:744961989817925767>")
                     .setDescription(`**Profile:** __[Visit](${summary.url})__`)
@@ -44,7 +44,7 @@ module.exports = {
                         { name: "Steam ID", value: `\`${summary.steamID}\``, inline: true },
                         { name: "Nickname", value: `\`${summary.nickname}\``, inline: true },
                         { name: "Realname", value: `\`${summary.realName}\``, inline: true },
-                        { name: "Primary Group", value: `[Visit](https://www.steamcommunity.com/groups/${summary.primaryGroupID})`, inline: true },
+                        { name: "Primary Group", value: `\`${summary.primaryGroupID}\``, inline: true },
                         { name: "Country Code", value: `\`${summary.countryCode}\``, inline: true },
                         { name: "State Code", value: `\`${summary.stateCode}\``, inline: true },
                         { name: "VAC Banned", value: `\`${bans.vacBanned}\``, inline: true },
@@ -53,6 +53,7 @@ module.exports = {
                         { name: "Community Banned", value: `\`${bans.communityBanned}\``, inline: true },
                         { name: "Last Ban", value: `\`${bans.daysSinceLastBan}\``, inline: true },
                         { name: "Economy Bans", value: `\`${bans.economyBan}\``, inline: true },
+                        { name: "Persona State", value: `\`${await personaState(summary.personaState)}\``, inline: true },
                     )
                     .setTimestamp()
                     .setThumbnail(summary.avatar.large)
@@ -97,5 +98,26 @@ module.exports = {
 
             return message.channel.send(embed);
         })
+    }
+}
+
+const personaState = async (personastate) => {
+    switch (personastate) {
+        case 0:
+            return "Offline";
+        case 1:
+            return "Online";
+        case 2:
+            return "Busy";
+        case 3:
+            return "Away";
+        case 4:
+            return "Snooze";
+        case 5:
+            return "Looking to Trade";
+        case 6:
+            return "Looking to Play";
+        default:
+            return "Error";
     }
 }
