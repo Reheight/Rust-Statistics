@@ -5,7 +5,7 @@ const SteamAPI = require('steamapi');
 const steam = new SteamAPI(steamKey);
 
 module.exports = {
-    "name": "statistics",
+    "name": "stats",
     "description": "Lookup statistics.",
     async execute(author, message, args, client) {
         if (args.length < 1) {

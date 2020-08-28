@@ -1,0 +1,20 @@
+-------------------- Auto-Git Log --------------------
+		Thu Aug 27 2020 20:49:20 GMT-0400 (Eastern Daylight Time)
+------------------------------------------------------
+
+Modified files:
+* bot.js
+* commands/kd.js
+
+
+Created files:
+* commands/deaths.js
+* commands/kills.js
+* run.bat
+
+
+Deleted files:
+
+
+Renamed files:
+* [object Object]

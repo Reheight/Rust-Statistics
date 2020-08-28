@@ -11,7 +11,10 @@ module.exports = {
                 .setDescription(
                     `\`rs!\` - Prefix
                     \`rs!stats <Steam ID/Link>\` - View Rust Statistics
+                    \`rs!statistics <Steam ID/Link>\` - View statistics
                     \`rs!kd <Steam ID/Link>\` - View Rust KDR
+                    \`rs!kills <Steam ID/Link>\` - View Kills
+                    \`rs!deaths <Steam ID/Link>\` - View Deaths
                     \`rs!botstats\` - View Bot Statistics`
                 )
                 .setTimestamp()
