@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Fri Aug 28 2020 14:22:48 GMT-0400 (Eastern Daylight Time)
+------------------------------------------------------
+
+Modified files:
+* bot.js
+* commands/help.js
+
+
+Created files:
+* commands/suggestion.js
+
+
+Deleted files:
+
+
+Renamed files:

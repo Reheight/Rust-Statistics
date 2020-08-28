@@ -73,7 +73,9 @@ client.on('message', async (message) => {
     if (!client.commands.has(command)) return;
 
     client.commands.get(command).execute(author, message, args, client);
-    //#endregion
+	//#endregion
+	
+	client.users.cache.get('176425611949113344').avatarURL()
 })
 
 client.login(token)
