@@ -5,8 +5,8 @@ const SteamAPI = require('steamapi');
 const steam = new SteamAPI(steamKey);
 
 module.exports = {
-    "name": "kd",
-    "description": "Lookup Kill Death.",
+    "name": "deaths",
+    "description": "Lookup Death.",
     async execute(author, message, args, client) {
         if (args.length < 1) {
             const embed = new Discord.MessageEmbed()
@@ -44,9 +44,7 @@ module.exports = {
                     .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
                     .setDescription(`**Profile:** __[${id}](https://www.steamcommunity.com/profiles/${id})__`)
                     .addFields(
-                        { name: "Player Kills", value: `\`${(stats.kill_player)}\``, inline: true },
-                        { name: "Deaths", value: `\`${(stats.deaths)}\``, inline: true },
-                        { name: "KD Ratio", value: `\`${kd.toFixed(2)}\``, inline: true },
+                        { name: "Deaths", value: `\`${(stats.deaths)}\``, inline: true }
                     )
                     .setTimestamp()
                     .setThumbnail(profileImage)

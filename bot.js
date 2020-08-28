@@ -5,6 +5,50 @@ const { prefix, token } = require('./config.json');
 const client = new Client();
 client.commands = new Collection();
 
+client.on('shardDisconnect', (closeEvent, number) => {
+	console.log(
+	`
+	Shard ${number} Disconnected:
+	${closeEvent.reason}
+	`
+	);
+})
+
+client.on('shardError', (error, number) => {
+	console.log(
+	`
+	Shard ${number} Error:
+	${error}
+	`
+	);
+})
+
+client.on('shardReconnecting', (number) => {
+	console.log(
+	`
+	Shard ${number} Reconnecting...
+	`
+	);
+})
+
+client.on('shardResume', (number) => {
+	console.log(
+	`
+	Shard ${number} has resumed...
+	`
+	);
+})
+
+client.on('shardReady', (number) => {
+	console.log(
+	`
+	Shard ${number} is now ready!
+	`
+	);
+
+	client.user.setActivity(`rs! | Shard: ${number}`, { type: 'WATCHING' });
+})
+
 //#region Command Handling
 const commandFiles = fs.readdirSync("./commands").filter(f => f.endsWith('.js'));
 for (const file of commandFiles) {
@@ -32,27 +76,5 @@ client.on('message', async (message) => {
     client.commands.get(command).execute(author, message, args, client);
     //#endregion
 })
-
-/* client.on('message', message => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
-	const command = args.shift().toLowerCase();
-
-	if (command === 'botstats') {
-		const promises = [
-			client.shard.fetchClientValues('guilds.cache.size'),
-			client.shard.broadcastEval('this.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)'),
-		];
-
-		return Promise.all(promises)
-			.then(results => {
-				const totalGuilds = results[0].reduce((acc, guildCount) => acc + guildCount, 0);
-				const totalMembers = results[1].reduce((acc, memberCount) => acc + memberCount, 0);
-				return message.channel.send(`Server count: ${totalGuilds}\nMember count: ${totalMembers}`);
-			})
-			.catch(console.error);
-	}
-}); */
 
 client.login(token)

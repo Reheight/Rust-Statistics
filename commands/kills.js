@@ -5,8 +5,8 @@ const SteamAPI = require('steamapi');
 const steam = new SteamAPI(steamKey);
 
 module.exports = {
-    "name": "stats",
-    "description": "Lookup statistics.",
+    "name": "kills",
+    "description": "Lookup kills.",
     async execute(author, message, args, client) {
         if (args.length < 1) {
             const embed = new Discord.MessageEmbed()
@@ -41,26 +41,14 @@ module.exports = {
                     const stats = statistics.stats;
                     const embed = new Discord.MessageEmbed()
                     .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
-                    .setDescription(`**Profile:** __https://www.steamcommunity.com/profiles/${id}__`)
+                    .setDescription(`**Profile:** __[${id}](https://www.steamcommunity.com/profiles/${id})__`)
                     .addFields(
                         { name: "Player Kills", value: `\`${(stats.kill_player)}\``, inline: true },
-                        { name: "Total Deaths", value: `\`${(stats.deaths)}\``, inline: true },
-                        { name: "Headshots", value: `\`${(stats.headshot)}\``, inline: true },
-                        { name: "Bullets Fired", value: `\`${(stats.bullet_fired)}\``, inline: true },
-                        { name: "Arrows Fired", value: `\`${(stats.arrow_fired)}\``, inline: true },
-                        { name: "Rockets Fired", value: `\`${(stats.rocket_fired)}\``, inline: true },
-                        { name: "Items Dropped", value: `\`${(stats.item_drop)}\``, inline: true },
-                        { name: "Researched BPs", value: `\`${(stats.blueprint_studied)}\``, inline: true },
-                        { name: "Suicides", value: `\`${(stats.death_suicide)}\``, inline: true },
-                        { name: "Bullets Hit on Players", value: `\`${(stats.bullet_hit_player)}\``, inline: true },
-                        { name: "Arrows Hit", value: `\`${(stats.arrow_hit_entity)}\``, inline: true },
                         { name: "Bears Killed", value: `\`${(stats.kill_bear)}\``, inline: true },
                         { name: "Boars Killed", value: `\`${(stats.kill_boar)}\``, inline: true },
                         { name: "Stags Killed", value: `\`${(stats.kill_stag)}\``, inline: true },
                         { name: "Wolves Killed", value: `\`${(stats.kill_wolf)}\``, inline: true },
-                        { name: "Scientists Killed", value: `\`${(stats.kill_scientist)}\``, inline: true },
-                        { name: "Placed blocks", value: `\`${(stats.placed_blocks)}\``, inline: true },
-                        { name: "Upgraded Blocks", value: `\`${(stats.upgraded_blocks)}\``, inline: true }
+                        { name: "Scientists Killed", value: `\`${(stats.kill_scientist)}\``, inline: true }
                     )
                     .setTimestamp()
                     .setThumbnail(profileImage)
@@ -72,7 +60,8 @@ module.exports = {
                     const embed = new Discord.MessageEmbed()
                     .setTitle("<:rust:744963918203584553> __**Error**__ <:rust:744963918203584553>")
                     .setDescription(
-                        `We were unable to fetch your Rust Statistics!`
+                        `We were unable to fetch your Rust Statistics!
+                        **Note:** Ensure your profile is public!`
                     )
                     .setTimestamp()
                     .setFooter('Reheight#4947')
