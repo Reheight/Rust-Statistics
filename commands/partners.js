@@ -3,7 +3,7 @@ const partnersFile = require('../extra/partners.json');
 
 module.exports = {
     name: "partners",
-    cooldown: 30,
+    cooldown: 10,
     description: "View information about our partner servers!",
     aliases: ["affiliates", "affiliate", "partnerships", "partner"],
     async execute(author, message, args, client) {

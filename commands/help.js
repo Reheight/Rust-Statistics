@@ -3,7 +3,7 @@ const fs = require('fs');
 
 module.exports = {
     name: "help",
-    cooldown: 30,
+    cooldown: 10,
     description: "View a list of the commands available.",
     aliases: ["cmds", "cmd", "commands", "command"],
     async execute(author, message, args, client) {        

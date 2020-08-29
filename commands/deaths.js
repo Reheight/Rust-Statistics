@@ -5,7 +5,7 @@ const steam = new SteamAPI(steamKey);
 
 module.exports = {
     name: "deaths",
-    cooldown: 30,
+    cooldown: 10,
     description: "View your death statistics within Rust.",
     aliases: ["dies", "die", "dead"],
     async execute(author, message, args, client) {

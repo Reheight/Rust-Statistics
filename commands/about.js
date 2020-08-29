@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "about",
-    cooldown: 30,
+    cooldown: 10,
     description: "View information about the bot.",
     aliases: ["botstats", "bot", "info", "information"],
     async execute(author, message, args, client) {
