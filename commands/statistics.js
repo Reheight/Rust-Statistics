@@ -34,6 +34,7 @@ module.exports = {
 
             return message.channel.send(embed);
         }
+
         steam.resolve(args[0]).then(id => {
             steam.getUserSummary(id).then(summary => {
                 const profileImage = summary.avatar.large;

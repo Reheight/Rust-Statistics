@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Sat Aug 29 2020 18:14:47 GMT-0400 (Eastern Daylight Time)
+------------------------------------------------------
+
+Modified files:
+* bot.js
+* commands/partners.js
+* extra/partners.json
+
+
+Created files:
+* .autogit/logs/log-29-7-2020-17-23-32.txt
+
+
+Deleted files:
+
+
+Renamed files:
