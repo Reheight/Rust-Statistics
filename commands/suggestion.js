@@ -4,7 +4,7 @@ module.exports = {
     name: "suggestion",
     cooldown: 30,
     description: "Suggest the owner something.",
-    aliases: [],
+    aliases: ["support", "assist"],
     async execute(author, message, args, client) {
         const suggestion = args.join(" ");
         if (args.length <= 0 || suggestion.length < 20) {

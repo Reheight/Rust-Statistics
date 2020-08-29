@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const Statistics = require('../extra/statistics');
 const { steamKey } = require('../config.json');
 const SteamAPI = require('steamapi');
 const steam = new SteamAPI(steamKey);

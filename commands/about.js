@@ -39,9 +39,5 @@ module.exports = {
 				return message.channel.send(embed);
 			})
 			.catch(console.error);
-        const embed = new Discord.MessageEmbed()
-            
-
-        return message.channel.send(embed);
     }
 }

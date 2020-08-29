@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const Statistics = require('../extra/statistics');
 const { steamKey } = require('../config.json');
 const SteamAPI = require('steamapi');
 const steam = new SteamAPI(steamKey);
@@ -8,7 +7,7 @@ module.exports = {
     name: "statistics",
     cooldown: 30,
     description: "Lookup statistics.",
-    aliases: [],
+    aliases: ["stats"],
     async execute(author, message, args, client) {
         if (args.length < 1) {
             const embed = new Discord.MessageEmbed()

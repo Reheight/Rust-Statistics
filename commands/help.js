@@ -1,29 +1,33 @@
 const Discord = require('discord.js');
-const { steamKey } = require('../config.json');
+const fs = require('fs');
 
 module.exports = {
     name: "help",
     cooldown: 30,
     description: "Help Page.",
     aliases: [],
-    async execute(author, message, args, client) {
-        const embed = new Discord.MessageEmbed()
-            .setTitle("<:rust:744963918203584553> __**HELP**__ <:rust:744963918203584553>")
-                .setDescription(
-                    `\`rs!\` - Prefix
-                    \`rs!stats <Steam ID/Link>\` - View Rust Statistics
-                    \`rs!statistics <Steam ID/Link>\` - View statistics
-                    \`rs!kd <Steam ID/Link>\` - View Rust KDR
-                    \`rs!kills <Steam ID/Link>\` - View Kills
-                    \`rs!deaths <Steam ID/Link>\` - View Deaths
-                    \`rs!profile <Steam ID/Link>\` - View Steam Profile
-                    \`rs!suggestion <Message>\` - Suggest Something to the Developers
-                    \`rs!botstats\` - View Bot Statistics`
-                )
-                .setTimestamp()
-                .setFooter('Reheight#4947')
-                .setColor(`#ce422b`)
+    async execute(author, message, args, client) {        
+        let commands = fs.readdirSync('./commands').filter(f => f.endsWith('.js'));
 
+        let pagesMax = commands.length;
+        let page = 1;
+
+        const embed = new Discord.MessageEmbed()
+            .setTitle("**Rust Statistics | HELP**")
+            .setDescription(
+                `Scroll through the commands using 🔼 and 🔽 reactions!`
+            )
+            .setThumbnail(client.user.avatarURL())
+            .setTimestamp()
+            .setFooter(`Page ${page} of ${pagesMax}`)
+            .setColor(`#ce422b`)
+        
+        await commandInformation(commands, page);
         return message.channel.send(embed);
     }
+}
+
+async function commandInformation(commands, index) {
+    const commandFile = require(`/commands/${commands[index - 1]}`);
+    console.log(commandFile);
 }

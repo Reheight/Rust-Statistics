@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const { steamKey } = require('../config.json');
 
 module.exports = {
     name: "cooldown",
