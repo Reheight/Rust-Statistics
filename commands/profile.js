@@ -6,8 +6,8 @@ const steam = new SteamAPI(steamKey);
 module.exports = {
     name: "profile",
     cooldown: 30,
-    description: "Lookup Steam Profile.",
-    aliases: [],
+    description: "View Steam profile information.",
+    aliases: ["steam", "account", "steamprofile", "steamaccount"],
     async execute(author, message, args, client) {
         if (args.length < 1) {
             const embed = new Discord.MessageEmbed()

@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: "cooldown",
     cooldown: 30,
-    description: "Cooldown information.",
+    description: "View information about command cooldowns.",
     aliases: ["timer", "limit", "wait"],
     async execute(author, message, args, client) {
         const embed = new Discord.MessageEmbed()

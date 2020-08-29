@@ -6,8 +6,8 @@ const steam = new SteamAPI(steamKey);
 module.exports = {
     name: "kills",
     cooldown: 30,
-    description: "Lookup kills.",
-    aliases: [],
+    description: "View your kills statistics within Rust.",
+    aliases: ["kill"],
     async execute(author, message, args, client) {
         if (args.length < 1) {
             const embed = new Discord.MessageEmbed()

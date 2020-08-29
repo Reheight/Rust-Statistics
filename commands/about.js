@@ -4,7 +4,7 @@ const { steamKey } = require('../config.json');
 module.exports = {
     name: "about",
     cooldown: 30,
-    description: "About Page.",
+    description: "View information about the bot.",
     aliases: ["botstats", "bot", "info", "information"],
     async execute(author, message, args, client) {
         const promises = [

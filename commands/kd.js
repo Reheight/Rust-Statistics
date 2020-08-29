@@ -6,7 +6,7 @@ const steam = new SteamAPI(steamKey);
 module.exports = {
     name: "kd",
     cooldown: 30,
-    description: "Lookup Kill Death.",
+    description: "View your Kill/Death ratio statistics within Rust.",
     aliases: ["killdeath", "killdeathrate", "killdeathratio", "kdr", "kdratio"],
     async execute(author, message, args, client) {
         if (args.length < 1) {
