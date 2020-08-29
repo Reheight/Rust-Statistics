@@ -109,8 +109,7 @@ client.on('message', async (message) => {
 
 	timestamps.set(message.author.id, now);
 	setTimeout(() => timestamps.delete(message.author.id), cooldownAmount)
-    await command.execute(author, message, args, client);
-	//#endregion
+	await command.execute(author, message, args, client);
 })
 
 client.login(token)

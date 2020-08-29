@@ -13,7 +13,7 @@ module.exports = {
         let page = 1;
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(partnerInformation(partners, page).name)
+            .setTitle(client.guilds.cache.get(partnerInformation(partners, page).guild).name)
             .setDescription(
                 partnerInformation(partners, page).description
             )
@@ -43,7 +43,7 @@ module.exports = {
                         page--;
 
                         const newEmbed = new Discord.MessageEmbed()
-                            .setTitle(partnerInformation(partners, page).name)
+                            .setTitle(client.guilds.cache.get(partnerInformation(partners, page).guild).name)
                             .setDescription(
                                 partnerInformation(partners, page).description
                             )
@@ -55,7 +55,7 @@ module.exports = {
                             .setFooter(`Partner ${page} of ${pagesMax}`)
                             .setColor(`#ce422b`)
 
-                        msg.edit(newEmbed);
+                        msg.edit(newEmbed)
                         return r.users.remove(author);
                     })
 
@@ -66,7 +66,7 @@ module.exports = {
                         page++;
 
                         const newEmbed = new Discord.MessageEmbed()
-                            .setTitle(partnerInformation(partners, page).name)
+                            .setTitle(client.guilds.cache.get(partnerInformation(partners, page).guild).name)
                             .setDescription(
                                 partnerInformation(partners, page).description
                             )
