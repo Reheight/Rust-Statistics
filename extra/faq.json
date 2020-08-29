@@ -1,0 +1,16 @@
+{
+    "questions": [
+        {
+            "question": "Every time I attempt to check my statistics, I am getting an error, how do I fix this?",
+            "answer": "Ensure your privacy settings allow the public to view your game details, give the Steam API up to 1-2 hours to detect this update."
+        },
+        {
+            "question": "Do you have any bots that supports any other games?",
+            "answer": "Currently as of 8/29/2020 we do not, but we plan on creating a bot for Minecraft next."
+        },
+        {
+            "question": "Does this bot happen to be open source?",
+            "answer": "I will be making this bot open source when I get the chance to, since it pretty much could serve as a template for any other Steam game."
+        }
+    ]
+}
