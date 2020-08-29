@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Sat Aug 29 2020 16:53:15 GMT-0400 (Eastern Daylight Time)
+------------------------------------------------------
+
+Modified files:
+* commands/about.js
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:
