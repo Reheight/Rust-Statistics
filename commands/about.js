@@ -2,9 +2,10 @@ const Discord = require('discord.js');
 const { steamKey } = require('../config.json');
 
 module.exports = {
-    "name": "about",
-    "description": "About Page.",
-    "alias": ["botstats"],
+    name: "about",
+    cooldown: 30,
+    description: "About Page.",
+    aliases: ["botstats", "bot", "info", "information"],
     async execute(author, message, args, client) {
         const promises = [
 			client.shard.fetchClientValues('guilds.cache.size'),

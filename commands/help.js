@@ -2,8 +2,10 @@ const Discord = require('discord.js');
 const { steamKey } = require('../config.json');
 
 module.exports = {
-    "name": "help",
-    "description": "Help Page.",
+    name: "help",
+    cooldown: 30,
+    description: "Help Page.",
+    aliases: [],
     async execute(author, message, args, client) {
         const embed = new Discord.MessageEmbed()
             .setTitle("<:rust:744963918203584553> __**HELP**__ <:rust:744963918203584553>")

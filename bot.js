@@ -59,23 +59,27 @@ for (const file of commandFiles) {
 }
 //#endregion
 
+//#region Cooldown Collection
+const cooldowns = new Collection();
+//#endregion
+
 //#region Message Event
 client.on('message', async (message) => {
-    if (message.author.bot) return; // Ensure the message isn't from a bot
-	
-	if (!message.content.startsWith(prefix)) return;
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const author = message.author;
-    const args = message.content.slice(prefix.length).trim().split(/ +/); // Getting message, removing the prefix, then splitting the message into an array.
-    const command = args.shift().toLowerCase(); // Removing first argument from args array, making it all lowercase, then returning it.
-    
-    //#region Checking if command exists
-    if (!client.commands.has(command)) return;
+	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	const commandName = args.shift().toLowerCase();
 
-    client.commands.get(command).execute(author, message, args, client);
+	const command = client.commands.get(commandName)
+		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+	if (!command) return;
+
+
+
+    await command.execute(author, message, args, client);
 	//#endregion
-	
-	client.users.cache.get('176425611949113344').avatarURL()
 })
 
 client.login(token)

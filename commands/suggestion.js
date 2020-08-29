@@ -1,9 +1,10 @@
 const Discord = require('discord.js');
 
 module.exports = {
-    "name": "suggestion",
-    "description": "Suggest the owner something.",
-    "aliases": [],
+    name: "suggestion",
+    cooldown: 30,
+    description: "Suggest the owner something.",
+    aliases: [],
     async execute(author, message, args, client) {
         const suggestion = args.join(" ");
         if (args.length <= 0 || suggestion.length < 20) {

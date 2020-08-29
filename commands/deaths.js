@@ -5,8 +5,10 @@ const SteamAPI = require('steamapi');
 const steam = new SteamAPI(steamKey);
 
 module.exports = {
-    "name": "deaths",
-    "description": "Lookup Death.",
+    name: "deaths",
+    cooldown: 30,
+    description: "Lookup Death.",
+    aliases: [],
     async execute(author, message, args, client) {
         if (args.length < 1) {
             const embed = new Discord.MessageEmbed()
