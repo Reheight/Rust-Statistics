@@ -47,7 +47,7 @@ module.exports = {
                     const stats = statistics.stats;
                     var page = 1;
 
-                    const combat = new Discord.MessageEmbed()
+                    const combatPrimary = new Discord.MessageEmbed()
                         .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
                         .setDescription(`*Combat* **(Primary)** \\[[${id}](${summary.url})\\]`)
                         .addFields(
@@ -59,6 +59,7 @@ module.exports = {
                             { name: "Kills (Chicken)", value: stats.kill_chicken, inline: true },
                             { name: "Kills (Horse)", value: stats.kill_horse, inline: true },
                             { name: "Kills (Wolf)", value: stats.kill_wolf, inline: true },
+                            { name: "Kills (Scientist)", value: stats.kill_scientist, inline: true },
                             { name: "Deaths (Overall)", value: stats.deaths, inline: true },
                             { name: "Deaths (Suicide)", value: stats.death_suicide, inline: true},
                             { name: "Deaths (Fall)", value: stats.death_fall, inline: true },
@@ -74,8 +75,109 @@ module.exports = {
                         .setFooter("Reheight#4947", client.guilds.cache.get('744824625397235794').members.cache.get('176425611949113344').user.avatarURL())
                         .setColor('#ce422b')
                         .setTimestamp();
+                    
+                    const combatMisc = new Discord.MessageEmbed()
+                        .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
+                        .setDescription(`*Combat* **(Miscellaneous)** \\[[${id}](${summary.url})\\]`)
+                        .addFields(
+                            { name: "Bullets Fired", value: stats.bullet_fired, inline: true },
+                            { name: "Arrows Fired", value: stats.arrow_fired, inline: true },
+                            { name: "Arrows Shot", value: stats.arrows_shot, inline: true },
+                            { name: "Rockets Fired", value: stats.rocket_fired, inline: true },
+                            { name: "Shotguns Fired", value: stats.shotgun_fired, inline: true },
+                            { name: "Melee Thrown", value: stats.melee_thrown, inline: true },
+                            { name: "Melee Strikes", value: stats.melee_strikes, inline: true },
+                            { name: "Bullet Hit (Player)", value: stats.bullet_hit_player, inline: true },
+                            { name: "Bullet Hit (Entity)", value: stats.bullet_hit_entity, inline: true },
+                            { name: "Bullet Hit (Building)", value: stats.bullet_hit_building, inline: true },
+                            { name: "Bullet Hit (Bear)", value: stats.bullet_hit_bear, inline: true },
+                            { name: "Bullet Hit (Horse)", value: stats.bullet_hit_horse, inline: true },
+                            { name: "Bullet Hit (Stag)", value: stats.bullet_hit_stag, inline: true },
+                            { name: "Bullet Hit (Wolf)", value: stats.bullet_hit_wolf, inline: true },
+                            { name: "Bullet Hit (Boar)", value: stats.bullet_hit_boar, inline: true },
+                            { name: "Bullet Hit (Sign)", value: stats.bullet_hit_sign, inline: true },
+                            { name: "Bullet Hit (Player Corpse)", value: stats.bullet_hit_playercorpse, inline: true },
+                            { name: "Bullet Hit (Corpse)", value: stats.bullet_hit_corpse, inline: true },
+                            { name: "Bullet Hit (Building)", value: stats.bullet_hit_building, inline: true },
+                            { name: "Arrow Hit (Entity)", value: stats.arrow_hit_entity, inline: true },
+                            { name: "Arrow Hit (Building)", value: stats.arrow_hit_building, inline: true },
+                            { name: "Arrow Hit (Boar)", value: stats.arrow_hit_boar, inline: true },
+                            { name: "Arrow Hit (Bear)", value: stats.arrow_hit_bear, inline: true },
+                            { name: "Arrow Hit (Wolf)", value: stats.arrow_hit_wolf, inline: true },
+                            { name: "Arrow Hit (Stag)", value: stats.arrow_hit_stag, inline: true },
+                            { name: "Arrow Hit (Chicken)", value: stats.arrow_hit_chicken, inline: true },
+                            { name: "Arrow Hit (Horse)", value: stats.arrow_hit_horse, inline: true },
+                            { name: "Arrow Hit (Player)", value: stats.arrow_hit_player, inline: true },
+                            { name: "Shotgun Hit (Building)", value: stats.shotgun_hit_building, inline: true },
+                            { name: "Shotgun Hit (Player)", value: stats.shotgun_hit_player, inline: true },
+                            { name: "Shotgun Hit (Horse)", value: stats.shotgun_hit_horse, inline: true },
+                            { name: "Shotgun Hit (Entity)", value: stats.shotgun_hit_entity, inline: true },
+                        )
+                        .setThumbnail(profileImage)
+                        .setFooter("Reheight#4947", client.guilds.cache.get('744824625397235794').members.cache.get('176425611949113344').user.avatarURL())
+                        .setColor('#ce422b')
+                        .setTimestamp();
 
-                    var pages = [combat]
+                    const farming = new Discord.MessageEmbed()
+                        .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
+                        .setDescription(`*Farming* \\[[${id}](${summary.url})\\]`)
+                        .addFields(
+                            { name: "Harvested (Stones)", value: stats["harvest.stones"] + stats.harvested_stones, inline: true },
+                            { name: "Harvested (Cloth)", value: stats["harvest.cloth"] + stats.harvested_cloth, inline: true },
+                            { name: "Harvested (Wood)", value: stats["harvest.wood"] + stats.harvested_wood, inline: true },
+                            { name: "Harvested (Leather)", value: stats.harvested_leather, inline: true },
+                            { name: "Acquired (Lowgrade)", value: stats.acquired_lowgradefuel, inline: true },
+                            { name: "Acquired (Metal Ore)", value: stats["acquired_metal.ore"], inline: true },
+                            { name: "Acquired (Scrap)", value: stats.acquired_scrap, inline: true },
+                            { name: "Acquired (Metal Ore)", value: stats["acquired_metal.ore"], inline: true },
+                            { name: "Barrels Destroyed", value: stats.destroyed_barrels, inline: true },
+                        )
+                        .setThumbnail(profileImage)
+                        .setFooter("Reheight#4947", client.guilds.cache.get('744824625397235794').members.cache.get('176425611949113344').user.avatarURL())
+                        .setColor('#ce422b')
+                        .setTimestamp();
+
+                    const building = new Discord.MessageEmbed()
+                        .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
+                        .setDescription(`*Building* \\[[${id}](${summary.url})\\]`)
+                        .addFields(
+                            { name: "Placed Blocks", value: stats.placed_blocks, inline: true },
+                            { name: "Upgraded Blocks", value: stats.upgraded_blocks, inline: true }
+                        )
+                        .setThumbnail(profileImage)
+                        .setFooter("Reheight#4947", client.guilds.cache.get('744824625397235794').members.cache.get('176425611949113344').user.avatarURL())
+                        .setColor('#ce422b')
+                        .setTimestamp();
+                        
+                    const miscellaneous = new Discord.MessageEmbed()
+                        .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
+                        .setDescription(`*Miscellaneous* \\[[${id}](${summary.url})\\]`)
+                        .addFields(
+                            { name: "Blueprints Studied", value: stats.blueprint_studied, inline: true },
+                            { name: "Inventory Opened (Count)", value: stats.INVENTORY_OPENED, inline: true },
+                            { name: "Crafting Opened (Count)", value: stats.CRAFTING_OPENED, inline: true },
+                            { name: "Map Opened (Count)", value: stats.MAP_OPENED, inline: true },
+                            { name: "Cupboard Opened (Count)", value: stats.CUPBOARD_OPENED, inline: true },
+                            { name: "Items Examined", value: stats.ITEM_EXAMINED, inline: true },
+                            { name: "Comfort Duration", value: stats.comfort_duration.toFixed(2), inline: true },
+                            { name: "Calories Consumed", value: stats.calories_consumed.toFixed(2), inline: true },
+                            { name: "Water Consumed", value: stats.water_consumed.toFixed(2), inline: true },
+                            { name: "Food (Pickup)", value: stats.pickup_category_food, inline: true },
+                            { name: "Radiation Duration (Total)", value: stats.radiation_exposure_duration.toFixed(2), inline: true },
+                            { name: "Cold Exposure (Total)", value: stats.cold_exposure_duration.toFixed(2), inline: true },
+                            { name: "Hot Exposure (Total)", value: stats.hot_exposure_duration.toFixed(2), inline: true },
+                            { name: "Seconds Speaking", value: stats.seconds_speaking.toFixed(2), inline: true },
+                            { name: "Horse Ridden (Distance)", value: `${stats.horse_distance_ridden} (${stats.horse_distance_ridden_km} km)`, inline: true },
+                            { name: "Helipad Landings", value: stats.helipad_landings, inline: true },
+                            { name: "Cargoship Bridge Visits", value: stats.cargoship_bridge_visits, inline: true },
+                            { name: "Notes Played", value: stats.InstrumentNotesPlayed, inline: true }
+                        )
+                        .setThumbnail(profileImage)
+                        .setFooter("Reheight#4947", client.guilds.cache.get('744824625397235794').members.cache.get('176425611949113344').user.avatarURL())
+                        .setColor('#ce422b')
+                        .setTimestamp();
+
+                    var pages = [combatPrimary, combatMisc, farming, building, miscellaneous]
 
                     const pagesMax = pages.length;
 
@@ -123,37 +225,6 @@ module.exports = {
                         })
                     }).catch(() => {
                         // Error
-                    })
-                    const embed = new Discord.MessageEmbed()
-                    .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
-                    .setDescription(`**Profile:** __[${id}](https://www.steamcommunity.com/profiles/${id})__`)
-                    .addFields(
-                        { name: "Player Kills", value: `\`${(stats.kill_player)}\``, inline: true },
-                        { name: "Total Deaths", value: `\`${(stats.deaths)}\``, inline: true },
-                        { name: "Headshots", value: `\`${(stats.headshot)}\``, inline: true },
-                        { name: "Bullets Fired", value: `\`${(stats.bullet_fired)}\``, inline: true },
-                        { name: "Arrows Fired", value: `\`${(stats.arrow_fired)}\``, inline: true },
-                        { name: "Rockets Fired", value: `\`${(stats.rocket_fired)}\``, inline: true },
-                        { name: "Items Dropped", value: `\`${(stats.item_drop)}\``, inline: true },
-                        { name: "Researched BPs", value: `\`${(stats.blueprint_studied)}\``, inline: true },
-                        { name: "Suicides", value: `\`${(stats.death_suicide)}\``, inline: true },
-                        { name: "Bullets Hit on Players", value: `\`${(stats.bullet_hit_player)}\``, inline: true },
-                        { name: "Arrows Hit", value: `\`${(stats.arrow_hit_entity)}\``, inline: true },
-                        { name: "Bears Killed", value: `\`${(stats.kill_bear)}\``, inline: true },
-                        { name: "Boars Killed", value: `\`${(stats.kill_boar)}\``, inline: true },
-                        { name: "Stags Killed", value: `\`${(stats.kill_stag)}\``, inline: true },
-                        { name: "Wolves Killed", value: `\`${(stats.kill_wolf)}\``, inline: true },
-                        { name: "Scientists Killed", value: `\`${(stats.kill_scientist)}\``, inline: true },
-                        { name: "Placed blocks", value: `\`${(stats.placed_blocks)}\``, inline: true },
-                        { name: "Upgraded Blocks", value: `\`${(stats.upgraded_blocks)}\``, inline: true },
-                        { name: "Harvested Stone", value: `\`${(stats["harvest.stones"])}\``, inline: true },
-                    )
-                    .setTimestamp()
-                    .setThumbnail(profileImage)
-                    .setFooter('Reheight#4947')
-                    .setColor(`#ce422b`)
-                    return message.channel.send(embed).catch(() => {
-                        // Unable to perform
                     })
                 }).catch((error) => {
                     const embed = new Discord.MessageEmbed()
