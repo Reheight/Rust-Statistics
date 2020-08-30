@@ -43,10 +43,87 @@ module.exports = {
         steam.resolve(args[0]).then(id => {
             steam.getUserSummary(id).then(summary => {
                 const profileImage = summary.avatar.large;
-
                 steam.getUserStats(id, `252490`).then((statistics) => {
-                    console.log(statistics) // this
                     const stats = statistics.stats;
+                    var page = 1;
+
+                    const combat = new Discord.MessageEmbed()
+                        .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
+                        .setDescription(`*Combat* **(Primary)** \\[[${id}](${summary.url})\\]`)
+                        .addFields(
+                            { name: "Headshots", value: stats.headshot, inline: true },
+                            { name: "Kills (Players)", value: stats.kill_player, inline: true },
+                            { name: "Kills (Bear)", value: stats.kill_bear, inline: true },
+                            { name: "Kills (Boar)", value: stats.kill_boar, inline: true },
+                            { name: "Kills (Stag)", value: stats.kill_stag, inline: true },
+                            { name: "Kills (Chicken)", value: stats.kill_chicken, inline: true },
+                            { name: "Kills (Horse)", value: stats.kill_horse, inline: true },
+                            { name: "Kills (Wolf)", value: stats.kill_wolf, inline: true },
+                            { name: "Deaths (Overall)", value: stats.deaths, inline: true },
+                            { name: "Deaths (Suicide)", value: stats.death_suicide, inline: true},
+                            { name: "Deaths (Fall)", value: stats.death_fall, inline: true },
+                            { name: "Deaths (Self-Inflicted)", value: stats.death_selfinflicted, inline: true },
+                            { name: "Deaths (Entity)", value: stats.death_entity, inline: true },
+                            { name: "Deaths (Wolf)", value: stats.death_wolf, inline: true },
+                            { name: "Deaths (Bear)", value: stats.death_bear, inline: true },
+                            { name: "Wounded (Overall)", value: stats.wounded, inline: true },
+                            { name: "Wounded (Assisted)", value: stats.wounded_assisted, inline: true },
+                            { name: "Wounded (Healed)", value: stats.wounded_healed, inline: true },
+                        )
+                        .setThumbnail(profileImage)
+                        .setFooter("Reheight#4947", client.guilds.cache.get('744824625397235794').members.cache.get('176425611949113344').user.avatarURL())
+                        .setColor('#ce422b')
+                        .setTimestamp();
+
+                    var pages = [combat]
+
+                    const pagesMax = pages.length;
+
+                    return message.channel.send(pages[page - 1]).then(msg => {
+                        msg.react('🔼').then(r => {
+                            msg.react('🔽').then(r => {
+                                const backwardsFilter = (reaction, user) => reaction.emoji.name === '🔼' && user.id === author.id;
+                                const forwardsFilter = (reaction, user) => reaction.emoji.name === '🔽' && user.id === author.id;
+            
+                                const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 });
+                                const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 });
+            
+                                backwards.on('collect', r => {
+                                    if (page === 1)
+                                        return r.users.remove(author).catch(() => {
+                                            // Unable to perform
+                                        })
+                                    
+                                    page--;
+            
+                                    msg.edit(pages[page - 1]).catch(() => {
+                                        // Unable to perform
+                                    })
+                                    return r.users.remove(author).catch(() => {
+                                        // Unable to perform
+                                    })
+                                })
+            
+                                forwards.on('collect', r => {
+                                    if (page === pagesMax)
+                                        return r.users.remove(message.author).catch(() => {
+                                            // Unable to perform
+                                        })
+            
+                                    page++;
+            
+                                    msg.edit(pages[page - 1]).catch(() => {
+                                        // Unable to perform
+                                    })
+                                    return r.users.remove(message.author).catch(() => {
+                                        // Unable to perform
+                                    })
+                                })
+                            })
+                        })
+                    }).catch(() => {
+                        // Error
+                    })
                     const embed = new Discord.MessageEmbed()
                     .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
                     .setDescription(`**Profile:** __[${id}](https://www.steamcommunity.com/profiles/${id})__`)
