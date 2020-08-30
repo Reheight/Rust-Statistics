@@ -4,6 +4,7 @@ const faqFile = require('../extra/faq.json');
 module.exports = {
     name: "faq",
     cooldown: 10,
+    usage: "faq",
     description: "View questions we get often!",
     aliases: ["questions", "answers"],
     async execute(author, message, args, client) {

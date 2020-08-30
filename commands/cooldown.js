@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: "cooldown",
     cooldown: 10,
+    usage: "cooldown",
     description: "View information about command cooldowns.",
     aliases: ["timer", "limit", "wait"],
     async execute(author, message, args, client) {

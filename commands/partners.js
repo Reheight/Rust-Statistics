@@ -4,6 +4,7 @@ const partnersFile = require('../extra/partners.json');
 module.exports = {
     name: "partners",
     cooldown: 10,
+    usage: "partners",
     description: "View information about our partner servers!",
     aliases: ["affiliates", "affiliate", "partnerships", "partner"],
     async execute(author, message, args, client) {

@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: "suggestion",
     cooldown: 10,
+    usage: "suggestion <message>",
     description: "Suggest improvements and/or features to the bot Developers.",
     aliases: ["support", "assist", "suggest"],
     async execute(author, message, args, client) {

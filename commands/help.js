@@ -1,9 +1,11 @@
 const Discord = require('discord.js');
+const { prefix } = require('../config.json');
 const fs = require('fs');
 
 module.exports = {
     name: "help",
     cooldown: 10,
+    usage: "help",
     description: "View a list of the commands available.",
     aliases: ["cmds", "cmd", "commands", "command"],
     async execute(author, message, args, client) {        
@@ -21,7 +23,8 @@ module.exports = {
                 { name: "Command", value: commandInformation(commands, page).name },
                 { name: "Cooldown", value: commandInformation(commands, page).cooldown },
                 { name: "Aliases", value: commandInformation(commands, page).aliases },
-            )
+                { name: "Usage", value: `${prefix}${commandInformation(commands, page).usage}` },
+                )
             .setThumbnail(client.user.avatarURL())
             .setTimestamp()
             .setFooter(`Page ${page} of ${pagesMax}`)
@@ -40,7 +43,9 @@ module.exports = {
 
                     backwards.on('collect', r => {
                         if (page === 1)
-                            return r.users.remove(author);
+                            return r.users.remove(author).catch(() => {
+                                // Unable to perform
+                            })
                         
                         page--;
 
@@ -53,19 +58,26 @@ module.exports = {
                                 { name: "Command", value: commandInformation(commands, page).name },
                                 { name: "Cooldown", value: commandInformation(commands, page).cooldown },
                                 { name: "Aliases", value: commandInformation(commands, page).aliases },
+                                { name: "Usage", value: `${prefix}${commandInformation(commands, page).usage}` },
                             )
                             .setThumbnail(client.user.avatarURL())
                             .setTimestamp()
                             .setFooter(`Page ${page} of ${pagesMax}`)
                             .setColor(`#ce422b`)
 
-                        msg.edit(newEmbed);
-                        return r.users.remove(author);
+                        msg.edit(newEmbed).catch(() => {
+                            // Unable to perform
+                        })
+                        return r.users.remove(author).catch(() => {
+                            // Unable to perform
+                        })
                     })
 
                     forwards.on('collect', r => {
                         if (page === pagesMax)
-                            return r.users.remove(message.author);
+                            return r.users.remove(message.author).catch(() => {
+                                // Unable to perform
+                            })
 
                         page++;
 
@@ -78,17 +90,24 @@ module.exports = {
                                 { name: "Command", value: commandInformation(commands, page).name },
                                 { name: "Cooldown", value: commandInformation(commands, page).cooldown },
                                 { name: "Aliases", value: commandInformation(commands, page).aliases },
+                                { name: "Usage", value: `${prefix}${commandInformation(commands, page).usage}` },
                             )
                             .setThumbnail(client.user.avatarURL())
                             .setTimestamp()
                             .setFooter(`Page ${page} of ${pagesMax}`)
                             .setColor(`#ce422b`)
 
-                        msg.edit(newEmbed);
-                        return r.users.remove(message.author);
+                        msg.edit(newEmbed).catch(() => {
+                            // Unable to perform
+                        })
+                        return r.users.remove(message.author).catch(() => {
+                            // Unable to perform
+                        })
                     })
                 })
             })
+        }).catch(() => {
+            // Unable to perform
         })
     }
 }
@@ -101,14 +120,16 @@ const commandInformation = (commands, index) => {
             name: commandFile.name,
             cooldown: commandFile.cooldown,
             description: commandFile.description,
-            aliases: "None Available"
+            aliases: "None Available",
+            usage: commandFile.usage
         }
     } else {
         return {
             name: commandFile.name,
             cooldown: commandFile.cooldown,
             description: commandFile.description,
-            aliases: `• ${commandFile.aliases.join("\n• ")}`
+            aliases: `• ${commandFile.aliases.join("\n• ")}`,
+            usage: commandFile.usage
         }
     }
 }

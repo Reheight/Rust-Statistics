@@ -6,6 +6,7 @@ const steam = new SteamAPI(steamKey);
 module.exports = {
     name: "profile",
     cooldown: 10,
+    usage: "profile <Steam Profile/Steam 64 ID>",
     description: "View Steam profile information.",
     aliases: ["steam", "account", "steamprofile", "steamaccount"],
     async execute(author, message, args, client) {
