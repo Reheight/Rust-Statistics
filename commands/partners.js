@@ -25,8 +25,6 @@ module.exports = {
             .setTimestamp()
             .setFooter(`Partner ${page} of ${pagesMax}`)
             .setColor(`#ce422b`)
-        
-        await partnerInformation(partners, page);
 
         return message.channel.send(embed).then(msg => {
             msg.react('🔼').then(r => {
@@ -39,7 +37,9 @@ module.exports = {
 
                     backwards.on('collect', r => {
                         if (page === 1)
-                            return r.users.remove(author);
+                            return r.users.remove(author).catch(() => {
+                                // Unable to perform
+                            })
                         
                         page--;
 
@@ -56,13 +56,19 @@ module.exports = {
                             .setFooter(`Partner ${page} of ${pagesMax}`)
                             .setColor(`#ce422b`)
 
-                        msg.edit(newEmbed)
-                        return r.users.remove(author);
+                        msg.edit(newEmbed).catch(() => {
+                            // Unable to perform
+                        })
+                        return r.users.remove(author).catch(() => {
+                            // Unable to perform
+                        })
                     })
 
                     forwards.on('collect', r => {
                         if (page === pagesMax)
-                            return r.users.remove(message.author);
+                            return r.users.remove(message.author).catch(() => {
+                                // Unable to perform
+                            })
 
                         page++;
 
@@ -79,11 +85,17 @@ module.exports = {
                             .setFooter(`Partner ${page} of ${pagesMax}`)
                             .setColor(`#ce422b`)
 
-                        msg.edit(newEmbed);
-                        return r.users.remove(message.author);
+                        msg.edit(newEmbed).catch(() => {
+                            // Unable to perform
+                        })
+                        return r.users.remove(message.author).catch(() => {
+                            // Unable to perform
+                        })
                     })
                 })
             })
+        }).catch(() => {
+            // Unable to perform
         })
     }
 }

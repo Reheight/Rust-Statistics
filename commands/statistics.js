@@ -20,7 +20,9 @@ module.exports = {
                 .setFooter('Reheight#4947')
                 .setColor(`#ce422b`)
 
-            return message.channel.send(embed);
+            return message.channel.send(embed).catch(() => {
+                // Unable to perform
+            })
         }
 
         if (args.length > 1) {
@@ -33,7 +35,9 @@ module.exports = {
                 .setFooter('Reheight#4947')
                 .setColor(`#ce422b`)
 
-            return message.channel.send(embed);
+            return message.channel.send(embed).catch(() => {
+                // Unable to perform
+            })
         }
 
         steam.resolve(args[0]).then(id => {
@@ -69,7 +73,9 @@ module.exports = {
                     .setThumbnail(profileImage)
                     .setFooter('Reheight#4947')
                     .setColor(`#ce422b`)
-                    return message.channel.send(embed);
+                    return message.channel.send(embed).catch(() => {
+                        // Unable to perform
+                    })
                 }).catch((error) => {
                     const embed = new Discord.MessageEmbed()
                     .setTitle("<:rust:744963918203584553> __**Error**__ <:rust:744963918203584553>")
@@ -81,7 +87,9 @@ module.exports = {
                     .setFooter('Reheight#4947')
                     .setColor(`#ce422b`)
                     console.log(error)
-                    return message.channel.send(embed);
+                    return message.channel.send(embed).catch(() => {
+                        // Unable to perform
+                    })
                 })
             }).catch((err) => {
                 const embed = new Discord.MessageEmbed()
@@ -93,7 +101,9 @@ module.exports = {
                 .setFooter('Reheight#4947')
                 .setColor(`#ce422b`)
 
-                return message.channel.send(embed);
+                return message.channel.send(embed).catch(() => {
+                    // Unable to perform
+                })
             })
         }).catch(() => {
             const embed = new Discord.MessageEmbed()
@@ -106,7 +116,9 @@ module.exports = {
                 .setFooter('Reheight#4947')
                 .setColor(`#ce422b`)
 
-            return message.channel.send(embed);
+            return message.channel.send(embed).catch(() => {
+                // Unable to perform
+            })
         })
     }
 }

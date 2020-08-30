@@ -20,6 +20,8 @@ module.exports = {
             .setFooter('Reheight#4947')
             .setColor(`#ce422b`)
 
-        return message.channel.send(embed);
+        return message.channel.send(embed).catch(() => {
+            // Unable to perform
+        })
     }
 }

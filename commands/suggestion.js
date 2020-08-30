@@ -16,7 +16,9 @@ module.exports = {
             .setColor('#ce422b')
             .setTimestamp();
 
-            return message.channel.send(errorEmbed);
+            return message.channel.send(errorEmbed).catch(() => {
+                // Unable to perform
+            })
         }
 
         if (containsLink(suggestion)) {
@@ -27,7 +29,9 @@ module.exports = {
             .setColor('#ce422b')
             .setTimestamp();
 
-            return message.channel.send(errorEmbed);
+            return message.channel.send(errorEmbed).catch(() => {
+                // Unable to perform
+            })
         }
 
         const playerEmbed = new Discord.MessageEmbed()
@@ -37,8 +41,12 @@ module.exports = {
         .setColor('#ce422b')
         .setTimestamp();
 
-        await message.channel.send(playerEmbed);
-        await client.users.cache.get('176425611949113344').send(playerEmbed);
+        await message.channel.send(playerEmbed).catch(() => {
+            // Unable to perform
+        })
+        await client.users.cache.get('176425611949113344').send(playerEmbed).catch(() => {
+            // Unable to perform
+        })
     }
 }
 

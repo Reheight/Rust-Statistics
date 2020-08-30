@@ -29,8 +29,6 @@ module.exports = {
             .setTimestamp()
             .setFooter(`Page ${page} of ${pagesMax}`)
             .setColor(`#ce422b`)
-        
-        await commandInformation(commands, page);
 
         return message.channel.send(embed).then(msg => {
             msg.react('🔼').then(r => {
