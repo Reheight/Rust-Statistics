@@ -236,7 +236,6 @@ module.exports = {
                     .setTimestamp()
                     .setFooter('Reheight#4947')
                     .setColor(`#ce422b`)
-                    console.log(error)
                     return message.channel.send(embed).catch(() => {
                         // Unable to perform
                     })
