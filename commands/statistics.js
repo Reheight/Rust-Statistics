@@ -45,6 +45,7 @@ module.exports = {
                 const profileImage = summary.avatar.large;
 
                 steam.getUserStats(id, `252490`).then((statistics) => {
+                    console.log(statistics) // this
                     const stats = statistics.stats;
                     const embed = new Discord.MessageEmbed()
                     .setTitle("<:rust:744963918203584553> __**Rust Statistics**__ <:rust:744963918203584553>")
@@ -67,7 +68,8 @@ module.exports = {
                         { name: "Wolves Killed", value: `\`${(stats.kill_wolf)}\``, inline: true },
                         { name: "Scientists Killed", value: `\`${(stats.kill_scientist)}\``, inline: true },
                         { name: "Placed blocks", value: `\`${(stats.placed_blocks)}\``, inline: true },
-                        { name: "Upgraded Blocks", value: `\`${(stats.upgraded_blocks)}\``, inline: true }
+                        { name: "Upgraded Blocks", value: `\`${(stats.upgraded_blocks)}\``, inline: true },
+                        { name: "Harvested Stone", value: `\`${(stats["harvest.stones"])}\``, inline: true },
                     )
                     .setTimestamp()
                     .setThumbnail(profileImage)
