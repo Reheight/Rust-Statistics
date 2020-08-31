@@ -41,7 +41,6 @@ module.exports = {
         }
         steam.resolve(args[0]).then(id => {
             steam.getUserSummary(id).then(summary => {
-                console.log(summary);
                 steam.getUserBans(id).then(async bans => {
                     const embed = new Discord.MessageEmbed()
                     .setTitle("<:steam:744961989817925767> __**Steam Profile**__ <:steam:744961989817925767>")
