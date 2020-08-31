@@ -65,7 +65,7 @@ const cooldowns = new Collection();
 
 //#region Message Event
 client.on('message', async (message) => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	if (!message.content.toLowerCase().startsWith(prefix) || message.author.bot) return;
 
     const author = message.author;
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
